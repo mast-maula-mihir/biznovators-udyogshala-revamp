@@ -14,20 +14,28 @@ npm run dev      # http://localhost:3000
 npm run build && npm start
 ```
 
-## Images
+## Pages
 
-By default images hotlink `https://www.biznovators.in/images/...` so the site
-works immediately. To make the repo self-contained:
+Home, About, Services, Media (53-photo gallery), Testimonials, Blog & Announcement
+(links to the Blogspot blog), Presentation (4 PDFs), Contact — each in `/en` and `/mr`.
+Inner-page text is as on the live site (English with Marathi sections); only nav labels switch.
+**BEQ (`/SignIn.aspx`) is intentionally not ported yet.**
+
+## Images / gallery / PDFs
+
+Until files are local, the app loads them from the live site. To make the repo self-contained, either:
 
 ```bash
-npm run assets                      # downloads into public/images
-echo 'NEXT_PUBLIC_ASSET_BASE=/images' > .env.local
+npm run assets   # downloads everything into public/ (needs normal internet access)
 ```
 
-Then commit `public/images`.
+or unzip `biznovators-site-assets.zip` (saved to Downloads by the browser export) into `public/`
+so you get `public/images`, `public/gallery`, `public/pdf`, `public/fav`, `public/NewCSS`.
+Then create `.env.local` containing `NEXT_PUBLIC_ASSET_ROOT=` pointing at your own origin,
+e.g. `NEXT_PUBLIC_ASSET_ROOT=http://localhost:3000` (or your deployed domain), and commit `public/`.
 
 ## Open items
 
 - Add the two phone numbers in `lib/content.ts` (`phones`).
 - Verify the address on the Contact page against the live site.
-- Not yet ported: any pages not linked from the home page (only Home and Contact were reachable).
+- Presentation PDF labels are inferred from file names; confirm the titles.\n- Add the BEQ section.

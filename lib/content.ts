@@ -5,8 +5,8 @@ export const locales: Locale[] = ["en", "mr"];
  * Image base. Defaults to the live site so the clone works immediately.
  * After running `npm run assets`, set NEXT_PUBLIC_ASSET_BASE=/images
  */
-export const ASSET_BASE =
-  process.env.NEXT_PUBLIC_ASSET_BASE ?? "https://www.biznovators.in/images";
+const ROOT = process.env.NEXT_PUBLIC_ASSET_ROOT ?? "https://www.biznovators.in";
+export const ASSET_BASE = `${ROOT}/images`;
 
 export const social = [
   {

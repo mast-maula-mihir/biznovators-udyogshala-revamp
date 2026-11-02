@@ -1,25 +1,24 @@
 #!/usr/bin/env bash
-# Copies the site's images into public/images so the app no longer hotlinks
-# the live site. Run from the repo root on a machine with normal internet:
+# Copies the site's images/gallery/PDFs into public/ so the app no longer
+# hotlinks the live site. Run from the repo root on a machine with normal internet:
 #   npm run assets
-set -euo pipefail
-BASE="https://www.biznovators.in/images"
-DEST="$(dirname "$0")/../public/images"
-mkdir -p "$DEST/snsico"
+# Then set NEXT_PUBLIC_ASSET_ROOT= (empty path root) — see README.
+set -uo pipefail
+BASE="https://www.biznovators.in"
+DEST="$(cd "$(dirname "$0")/.." && pwd)/public"
+mkdir -p "$DEST/images/snsico" "$DEST/gallery/vlb_images1" "$DEST/gallery/vlb_thumbnails1" "$DEST/pdf" "$DEST/fav"
 
-files=(
-  top.png logo.png h2info.png info_graphic3.png
-  logo_shc.png logo_biznovators.png logo_udyogshalam.png logo_art.png logo_edf.png
-  snsico/fb.png snsico/link.png snsico/yt.png
-)
-for f in "${files[@]}"; do
-  echo "↓ $f"
-  curl -fsSL "$BASE/$f" -o "$DEST/$f"
-done
+get() { # path
+  [ -s "$DEST/$1" ] && return 0
+  echo "↓ $1"
+  curl -fsSL "$BASE/$1" -o "$DEST/$1" || { echo "  ✗ failed: $1"; rm -f "$DEST/$1"; }
+}
 
-# Favicons referenced by the original <head>
-mkdir -p "$DEST/../fav"
-curl -fsSL "https://www.biznovators.in/fav/favicon.ico" -o "$DEST/../fav/favicon.ico" || true
+for f in top logo h2info info_graphic3 logo_shc logo_biznovators logo_udyogshalam logo_art logo_edf; do get "images/$f.png"; done
+for f in fb link yt; do get "images/snsico/$f.png"; done
+get images/director.jpg
 
-echo
-echo "Done. Now set NEXT_PUBLIC_ASSET_BASE=/images in .env.local (see README)."
+# gallery + about-page photos, derived from lib/site.ts
+node --experimental-strip-types -e '
+import("./lib/site.ts").then(m => { for (const p of m.allAssetPaths) console.log(p) })
+' 2>/dev/null | while read -r p; do get "$p"; done

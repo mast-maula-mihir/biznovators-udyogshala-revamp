@@ -1,9 +1,17 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { Inter, Noto_Sans_Devanagari } from "next/font/google";
 import "../globals.css";
 import { copy, locales, type Locale } from "@/lib/content";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
+const devanagari = Noto_Sans_Devanagari({
+  subsets: ["devanagari"],
+  variable: "--font-devanagari",
+  display: "swap",
+});
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -43,7 +51,7 @@ export default async function LocaleLayout({
   if (!locales.includes(locale as Locale)) notFound();
 
   return (
-    <html lang={locale}>
+    <html lang={locale} className={`${inter.variable} ${devanagari.variable}`}>
       <body>
         <Header locale={locale as Locale} />
         <main className="wrap">{children}</main>

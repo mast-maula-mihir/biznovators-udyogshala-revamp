@@ -11,9 +11,11 @@ export default async function Home({
 
   return (
     <>
-      <h1>{c.intro}</h1>
-      <p className="lead">{c.belief}</p>
-      <p className="muted">{c.domains}</p>
+      <section className="hero">
+        <h1>{c.intro}</h1>
+        <p className="lead">{c.belief}</p>
+        <p className="muted">{c.domains}</p>
+      </section>
 
       <section className="letter" lang={locale}>
         <h2>{c.letterTitle}</h2>

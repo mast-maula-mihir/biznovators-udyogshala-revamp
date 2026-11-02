@@ -31,11 +31,12 @@ npm run assets   # downloads everything into public/ (needs normal internet acce
 
 or unzip `biznovators-site-assets.zip` (saved to Downloads by the browser export) into `public/`
 so you get `public/images`, `public/gallery`, `public/pdf`, `public/fav`, `public/NewCSS`.
-Then create `.env.local` containing `NEXT_PUBLIC_ASSET_ROOT=` pointing at your own origin,
-e.g. `NEXT_PUBLIC_ASSET_ROOT=http://localhost:3000` (or your deployed domain), and commit `public/`.
+Then create `.env.local` containing `NEXT_PUBLIC_ASSET_ROOT=` (empty value → files are served
+from this app's own `/images`, `/gallery`, `/pdf`) and commit `public/`.
 
 ## Open items
 
 - Add the two phone numbers in `lib/content.ts` (`phones`).
 - Verify the address on the Contact page against the live site.
-- Presentation PDF labels are inferred from file names; confirm the titles.\n- Add the BEQ section.
+- Presentation PDF labels are inferred from file names; confirm the titles.
+- Add the BEQ section.

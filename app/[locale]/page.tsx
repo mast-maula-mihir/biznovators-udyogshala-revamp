@@ -11,6 +11,13 @@ export default async function Home({
 
   return (
     <>
+      <div
+        className="hero-banner"
+        role="img"
+        aria-label="Biznovators Udyogshalam"
+        style={{ "--banner": `url(${ASSET_BASE}/intro-banner.jpg)` } as React.CSSProperties}
+      />
+
       <section className="hero">
         <h1>{c.intro}</h1>
         <p className="lead">{c.belief}</p>

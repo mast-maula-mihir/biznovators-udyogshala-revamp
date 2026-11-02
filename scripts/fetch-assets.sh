@@ -17,6 +17,7 @@ get() { # path
 for f in top logo h2info info_graphic3 logo_shc logo_biznovators logo_udyogshalam logo_art logo_edf; do get "images/$f.png"; done
 for f in fb link yt; do get "images/snsico/$f.png"; done
 get images/director.jpg
+get images/intro-banner.jpg
 
 # gallery + about-page photos, derived from lib/site.ts
 node --experimental-strip-types -e '

@@ -13,6 +13,8 @@ const devanagari = Noto_Sans_Devanagari({
   display: "swap",
 });
 
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }

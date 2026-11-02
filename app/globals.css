@@ -1,0 +1,62 @@
+:root {
+  --bg: #ffffff;
+  --fg: #1f2933;
+  --muted: #5b6770;
+  --accent: #b4491f;
+  --card: #faf6f1;
+  --line: #e7ddd1;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14110f;
+    --fg: #ece6df;
+    --muted: #a99f94;
+    --accent: #f08a5d;
+    --card: #1e1a17;
+    --line: #342d27;
+  }
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: system-ui, -apple-system, "Segoe UI", "Noto Sans Devanagari", "Mangal", sans-serif;
+  line-height: 1.65;
+}
+a { color: var(--accent); }
+.wrap { max-width: 960px; margin: 0 auto; padding: 0 16px; }
+
+header.site { border-bottom: 1px solid var(--line); }
+header.site .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 12px; padding-bottom: 12px; flex-wrap: wrap; }
+header.site img { height: 56px; width: auto; display: block; }
+nav.site { display: flex; gap: 20px; align-items: center; }
+nav.site a { text-decoration: none; font-weight: 600; color: var(--fg); }
+nav.site a:hover { color: var(--accent); }
+nav.site .lang { border: 1px solid var(--line); border-radius: 999px; padding: 2px 12px; }
+
+h1 { font-size: 1.5rem; line-height: 1.35; margin: 32px 0 12px; }
+h2 { font-size: 1.25rem; margin: 32px 0 12px; }
+p { margin: 0 0 14px; }
+.lead { font-size: 1.1rem; }
+.muted { color: var(--muted); }
+
+.grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); margin: 16px 0 32px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 20px; }
+.card img { height: 72px; width: auto; max-width: 100%; object-fit: contain; display: block; margin-bottom: 12px; }
+.card h3 { margin: 0 0 6px; font-size: 1.05rem; }
+.card p { margin: 0; color: var(--muted); font-size: 0.95rem; }
+
+.letter { border-left: 3px solid var(--accent); padding-left: 20px; margin: 24px 0; }
+.infographic { width: 100%; height: auto; border-radius: 12px; margin: 16px 0; }
+.signoff { font-weight: 600; }
+
+.social { display: flex; flex-wrap: wrap; gap: 16px 24px; margin: 12px 0 32px; padding: 0; list-style: none; }
+.social a { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; color: var(--fg); }
+.social img { width: 28px; height: 28px; }
+
+footer.site { border-top: 1px solid var(--line); margin-top: 48px; padding: 20px 0; color: var(--muted); font-size: 0.9rem; }
+
+dl.contact { display: grid; grid-template-columns: max-content 1fr; gap: 10px 24px; }
+dl.contact dt { font-weight: 600; }
+dl.contact dd { margin: 0; }

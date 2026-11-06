@@ -27,8 +27,8 @@ jobs:
       - run: npm run build
         env:
           STATIC_EXPORT: "1"
-          NEXT_PUBLIC_BASE_PATH: /${{ github.event.repository.name }}
-          NEXT_PUBLIC_ASSET_ROOT: /${{ github.event.repository.name }}
+          NEXT_PUBLIC_BASE_PATH: ""
+          NEXT_PUBLIC_ASSET_ROOT: ""
       - uses: actions/upload-pages-artifact@v3
         with:
           path: out
